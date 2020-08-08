@@ -46,25 +46,11 @@ Ensure your `package.json` includes this property:
 ```javascript
 import alt from 'alt-server';
 
-// Create a simple red marker
-alt.emit(
-    'markers:Create',
-    0, // unique identifier
-    1, // type of the marker
-    new alt.Vector3(0, 0, 72), // position of the marker
-    new alt.Vector3(0, 0, 0), // direction of the marker
-    new alt.Vector3(0, 0, 0), // rotation of the marker
-    new alt.Vector3(1, 1, 1), // scale of the marker
-    { // color of the marker
-        red: 255, 
-        green: 0, 
-        blue: 0, 
-        alpha: 100 
-    } 
-);
+// Create a simple green marker
+alt.emit('markers:Create', "casinoMarkerOne", 6, new alt.Vector3(1085.3143, 214.3385, -49.2065), new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), new alt.Vector3(2, 2, 2), {red:38, green:166, blue:91, alpha:100});
+alt.emit('markers:SetDrawDistance', 150);
 
-// Sync all of the created markers with the newly connected player
-alt.on('playerConnect', player => {
+alt.on('playerConnect', (player) => {
     alt.emit('markers:Sync', player);
 });
 ```
